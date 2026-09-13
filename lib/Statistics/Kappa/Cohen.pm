@@ -1,53 +1,89 @@
 package Statistics::Kappa::Cohen;
+use 5.026;
 
-use 5.008003;
-use strict;
-use warnings;
+our $VERSION = '0.01';
+
+use Moo;
+use experimental qw{ signatures };
+
+use List::Util qw{ sum };
+use namespace::clean;
+
+has data               => (is => 'ro',   required => 1);
+has kappa              => (is => 'lazy', init_arg => undef);
+has confusion          => (is => 'lazy', init_arg => undef);
+has chance_agreement   => (is => 'lazy', init_arg => undef);
+has observed_agreement => (is => 'lazy', init_arg => undef);
+has standard_error     => (is => 'lazy', init_arg => undef);
+
+sub categories($self) {
+    my %c;
+    @c{ map @$_, @{ $self->{data} } } = ();
+    return keys %c
+}
+
+sub confidence_interval($self, $level) {
+    [$self->kappa - (1 + $level) * $self->standard_error,
+     $self->kappa + (1 + $level) * $self->standard_error]
+}
+
+sub _build_standard_error($self) {
+    sqrt($self->observed_agreement * (1 - $self->observed_agreement)
+         / @{ $self->data } / (1 - $self->chance_agreement) ** 2)
+}
+
+sub _build_kappa($self) {
+    return ($self->observed_agreement - $self->chance_agreement)
+           / (1 - $self->chance_agreement)
+}
+
+sub _build_confusion($self) {
+    my %c;
+    for my $pair (@{ $self->data }) {
+        ++$c{ $pair->[0] }{ $pair->[1] }
+    }
+    return \%c
+}
+
+sub _build_observed_agreement($self) {
+    return sum(map $self->confusion->{$_}{$_} // 0, keys %{ $self->confusion })
+           / @{ $self->data }
+}
+
+sub _build_chance_agreement($self) {
+    return sum(map { my $c = $_;
+                     sum(values %{ $self->confusion->{$c} })
+                     * sum(map $self->confusion->{$_}{$c} // 0,
+                               $self->categories)
+               } $self->categories
+    ) / @{ $self->data } ** 2
+}
 
 =head1 NAME
 
-Statistics::Kappa::Cohen - The great new Statistics::Kappa::Cohen!
+Statistics::Kappa::Cohen - Calculate inter-annotator agreement.
 
 =head1 VERSION
 
 Version 0.01
 
-=cut
-
-our $VERSION = '0.01';
-
-
 =head1 SYNOPSIS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
 
     use Statistics::Kappa::Cohen;
 
-    my $foo = Statistics::Kappa::Cohen->new();
-    ...
+    my @data = ([1, 1], [1, 0], [1, 0], [0, 0], [1, 1], [0, 1]);
+    my $ck = 'Statistics::Kappa::Cohen'->new(data => @\data);
+    my $kappa =  $ck->kappa;
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 new
 
-=cut
-
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
+The constructor. It takes a named argument C<data> which should contains an
+array reference. The elements of the array should be annonymous arrays of two
+elements, representing answers by the two raters we are comparing.
 
 =head1 AUTHOR
 
@@ -58,8 +94,6 @@ E. Choroba <choroba@matfyz.cz>
 Please report any bugs or feature requests to C<bug-statistics-kappa-cohen at rt.cpan.org>, or through
 the web interface at L<https://rt.cpan.org/NoAuth/ReportBug.html?Queue=Statistics-Kappa-Cohen>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
-
-
 
 
 =head1 SUPPORT
@@ -102,4 +136,4 @@ This is free software, licensed under:
 
 =cut
 
-1; # End of Statistics::Kappa::Cohen
+__PACKAGE__
