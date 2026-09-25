@@ -12,7 +12,7 @@ use namespace::clean;
 has data               => (is => 'ro',   required => 1);
 has kappa              => (is => 'lazy', init_arg => undef);
 has confusion          => (is => 'lazy', init_arg => undef);
-has chance_agreement   => (is => 'lazy', init_arg => undef);
+has expected_agreement => (is => 'lazy', init_arg => undef);
 has observed_agreement => (is => 'lazy', init_arg => undef);
 has standard_error     => (is => 'lazy', init_arg => undef);
 
@@ -29,12 +29,12 @@ sub confidence_interval($self, $level) {
 
 sub _build_standard_error($self) {
     sqrt($self->observed_agreement * (1 - $self->observed_agreement)
-         / @{ $self->data } / (1 - $self->chance_agreement) ** 2)
+         / @{ $self->data } / (1 - $self->expected_agreement) ** 2)
 }
 
 sub _build_kappa($self) {
-    return ($self->observed_agreement - $self->chance_agreement)
-           / (1 - $self->chance_agreement)
+    return ($self->observed_agreement - $self->expected_agreement)
+           / (1 - $self->expected_agreement)
 }
 
 sub _build_confusion($self) {
@@ -50,7 +50,7 @@ sub _build_observed_agreement($self) {
            / @{ $self->data }
 }
 
-sub _build_chance_agreement($self) {
+sub _build_expected_agreement($self) {
     return sum(map { my $c = $_;
                      sum(values %{ $self->confusion->{$c} })
                      * sum(map $self->confusion->{$_}{$c} // 0,

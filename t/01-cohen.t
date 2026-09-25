@@ -40,7 +40,7 @@ subtest 'r-project.com' => sub {
 
     my $ck = 'Statistics::Kappa::Cohen'->new(data => \@answers);
     is sprintf('%.4f', $ck->observed_agreement), 0.8814, 'observed';
-    is sprintf('%.4f', $ck->chance_agreement), 0.6125, 'chance';
+    is sprintf('%.4f', $ck->expected_agreement), 0.6125, 'expected';
     is sprintf('%.4f', $ck->kappa), 0.6938, 'kappa';
 };
 
