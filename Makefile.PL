@@ -20,7 +20,7 @@ my %WriteMakefileArgs = (
         #'ABC'              => '1.6',
         #'Foo::Bar::Module' => '5.0401',
     },
-    dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
+    dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', TAR => 'ptar' },
     clean => { FILES => 'Statistics-Kappa-*' },
     META_MERGE => {
         'meta-spec' => { version => 2 },
