@@ -4,10 +4,10 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
-    NAME             => 'Statistics::Kappa::Cohen',
+    NAME             => 'Statistics::Kappa',
     AUTHOR           => ['E. Choroba <choroba@matfyz.cz>'],
-    VERSION_FROM     => 'lib/Statistics/Kappa/Cohen.pm',
-    ABSTRACT_FROM    => 'lib/Statistics/Kappa/Cohen.pm',
+    VERSION_FROM     => 'lib/Statistics/Kappa.pm',
+    ABSTRACT_FROM    => 'lib/Statistics/Kappa.pm',
     LICENSE          => 'artistic_2',
     MIN_PERL_VERSION => '5.008003',
     CONFIGURE_REQUIRES => {
@@ -21,7 +21,7 @@ my %WriteMakefileArgs = (
         #'Foo::Bar::Module' => '5.0401',
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean => { FILES => 'Statistics-Kappa-Cohen-*' },
+    clean => { FILES => 'Statistics-Kappa-*' },
     META_MERGE => {
         'meta-spec' => { version => 2 },
         resources   => {
@@ -31,7 +31,7 @@ my %WriteMakefileArgs = (
                 web  => 'https://github.com/choroba/Statistics-Kappa-Cohen',
             },
             bugtracker => {
-                web => 'https://github.com/choroba/Statistics-Kappa-Cohen/issues',
+                web => 'https://github.com/choroba/Statistics-Kappa/issues',
             },
         },
     },

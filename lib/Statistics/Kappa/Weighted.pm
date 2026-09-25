@@ -91,7 +91,7 @@ Version 0.02
 
     sub weight($x, $y) { abs($x - $y) }
 
-    my @data = ([1, 1], [1, 0], [1, 0], [0, 0], [1, 1], [0, 1]);
+    my @data = ([3, 2], [2, 2], [1, 1], [2, 2], [3, 3]);
     my $ck = 'Statistics::Kappa::Cohen'->new(data   => \@data,
                                              weight => \&weight);
     my $kappa =  $ck->kappa;
@@ -116,17 +116,18 @@ E. Choroba <choroba@matfyz.cz>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-statistics-kappa-cohen at rt.cpan.org>, or through
-the web interface at L<https://rt.cpan.org/NoAuth/ReportBug.html?Queue=Statistics-Kappa-Cohen>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
+Please report any bugs or feature requests to the L<GitHub
+repository|https://github.com/choroba/Statistics-Kappa-Cohen>, to
+C<bug-statistics-kappa at rt.cpan.org>, or through the web interface at
+L<https://rt.cpan.org/NoAuth/ReportBug.html?Queue=Statistics-Kappa>. I will be
+notified, and then you'll automatically be notified of progress on your bug as
+I make changes.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc Statistics::Kappa::Cohen
-
 
 You can also look for information at:
 
@@ -146,9 +147,11 @@ L<https://metacpan.org/release/Statistics-Kappa-Cohen>
 
 =back
 
+=head1 SEE ALSO
 
-=head1 ACKNOWLEDGEMENTS
-
+Other modules from L<Statistics::Kappa>: L<Statistics::Kappa::Cohen> and
+L<Statistics::Kappa::Fleiss>. Another inter-rater agreement statistics:
+L<Statistics::Krippendorff>.
 
 =head1 LICENSE AND COPYRIGHT
 

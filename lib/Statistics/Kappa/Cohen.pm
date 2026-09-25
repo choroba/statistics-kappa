@@ -89,10 +89,12 @@ E. Choroba <choroba@matfyz.cz>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-statistics-kappa-cohen at rt.cpan.org>, or through
-the web interface at L<https://rt.cpan.org/NoAuth/ReportBug.html?Queue=Statistics-Kappa-Cohen>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
+Please report any bugs or feature requests to the L<GitHub
+repository|https://github.com/choroba/Statistics-Kappa-Cohen>, to
+C<bug-statistics-kappa at rt.cpan.org>, or through the web interface at
+L<https://rt.cpan.org/NoAuth/ReportBug.html?Queue=Statistics-Kappa>. I will be
+notified, and then you'll automatically be notified of progress on your bug as
+I make changes.
 
 =head1 SUPPORT
 
@@ -119,9 +121,11 @@ L<https://metacpan.org/release/Statistics-Kappa-Cohen>
 
 =back
 
+=head1 SEE ALSO
 
-=head1 ACKNOWLEDGEMENTS
-
+Other modules from L<Statistics::Kappa>: L<Statistics::Kappa::Fleiss> and
+L<Statistics::Kappa::Weighted>. Another inter-rater agreement statistics:
+L<Statistics::Krippendorff>.
 
 =head1 LICENSE AND COPYRIGHT
 
