@@ -121,11 +121,7 @@ E. Choroba <choroba@matfyz.cz>
 =head1 BUGS
 
 Please report any bugs or feature requests to the L<GitHub
-repository|https://github.com/choroba/statistics-kappa>, to
-C<bug-statistics-kappa at rt.cpan.org>, or through the web interface at
-L<https://rt.cpan.org/NoAuth/ReportBug.html?Queue=Statistics-Kappa>. I will be
-notified, and then you'll automatically be notified of progress on your bug as
-I make changes.
+repository|https://github.com/choroba/statistics-kappa>.
 
 =head1 SUPPORT
 
@@ -140,10 +136,6 @@ You can also look for information at:
 =item * GitHub issue tracker (report bugs here)
 
 L<https://github.com/choroba/statistics-kappa/issues>
-
-=item * RT: CPAN's request tracker (or here)
-
-L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Statistics-Kappa>
 
 =item * Search CPAN
 

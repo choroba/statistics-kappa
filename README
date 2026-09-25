@@ -21,11 +21,8 @@ perldoc command.
 
 You can also look for information at:
 
-    GitHub issue tracker
+    GitHub issue tracker (report bugs here)
         https://github.com/choroba/statistics-kappa/issues
-
-    RT, CPAN's request tracker (report bugs here)
-        https://rt.cpan.org/NoAuth/Bugs.html?Dist=Statistics-Kappa
 
     Search CPAN
         https://metacpan.org/release/Statistics-Kappa
