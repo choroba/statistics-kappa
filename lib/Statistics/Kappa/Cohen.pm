@@ -105,13 +105,13 @@ You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker (report bugs here)
-
-L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Statistics-Kappa-Cohen>
-
-=item * GitHub issue tracker
+=item * GitHub issue tracker (report bugs here)
 
 L<https://github.com/choroba/Statistics-Kappa-Cohen/issues>
+
+=item * RT: CPAN's request tracker (or here)
+
+L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Statistics-Kappa-Cohen>
 
 =item * Search CPAN
 
