@@ -92,8 +92,8 @@ Version 0.01
     sub weight($x, $y) { abs($x - $y) }
 
     my @data = ([3, 2], [2, 2], [1, 1], [2, 2], [3, 3]);
-    my $ck = 'Statistics::Kappa::Cohen'->new(data   => \@data,
-                                             weight => \&weight);
+    my $ck = 'Statistics::Kappa::Weighted'->new(data   => \@data,
+                                                weight => \&weight);
     my $kappa =  $ck->kappa;
 
 =head1 METHODS
@@ -131,7 +131,7 @@ I make changes.
 
 You can find documentation for this module with the perldoc command.
 
-    perldoc Statistics::Kappa::Cohen
+    perldoc Statistics::Kappa::Weighted
 
 You can also look for information at:
 
