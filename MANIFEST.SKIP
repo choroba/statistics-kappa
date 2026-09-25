@@ -2,6 +2,7 @@
 ^\.github/
 ^\.gitignore$
 ^MANIFEST\.SKIP$
+^Makefile\.old$
 ~$
 ^Statistics-Kappa-[0-9_.]+\.tar\.gz$
 ^Statistics-Kappa-[0-9_.]+/
