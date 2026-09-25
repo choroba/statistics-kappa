@@ -100,7 +100,7 @@ Version 0.02
 
 =head2 new
 
-The constructor. It takes a named argument C<data> which should contains an
+The constructor. It takes a named argument C<data> which should contain an
 array reference. The elements of the array should be anonymous arrays of two
 elements, representing answers by the two raters we are comparing. Another
 argument is C<weight> which should be a code reference returning the weight of
