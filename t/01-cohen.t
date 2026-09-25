@@ -4,7 +4,7 @@ use strict;
 
 use Statistics::Kappa::Cohen;
 
-use Test::More tests => 5;
+use Test::More tests => 6;
 
 subtest 'wikipedia' => sub {
     plan(tests => 1);
@@ -58,6 +58,23 @@ subtest 'J. Koval uwo.ca' => sub {
     is sprintf('%.3f', $ci->[0]), 0.331, 'confidence interval start';
     is sprintf('%.3f', $ci->[1]), 0.669, 'confidence interval end';
 
+};
+
+subtest 'spssfocus' => sub {  # See also 02-weighted.t.
+    plan(tests => 2);
+    my @data = ([1, 1, 1], [1, 1, 3], [2, 1, 1], [1, 1, 1], [3, 2, 3],
+                [3, 3, 2], [2, 2, 2], [1, 1, 1], [2, 2, 2], [3, 3, 3],
+                [1, 1, 1], [1, 1, 1], [2, 2, 1], [1, 2, 1], [2, 1, 2],
+                [3, 2, 2], [3, 3, 3], [2, 2, 3], [1, 1, 1], [1, 2, 1],
+                [3, 3, 1], [1, 1, 1], [1, 1, 3], [1, 1, 2], [1, 1, 1]);
+
+    my $ck1 = 'Statistics::Kappa::Cohen'->new(
+        data => [map [@$_[0, 1]], @data]);
+    is sprintf('%.3f', $ck1->kappa), 0.609, 'no weighting candidate 1';
+
+    my $ck2 = 'Statistics::Kappa::Cohen'->new(
+        data => [map [@$_[0, 2]], @data]);
+    is sprintf('%.3f', $ck2->kappa), 0.414, 'no weighting candidate 2';
 };
 
 subtest 'Mary L McHugh' => sub {
