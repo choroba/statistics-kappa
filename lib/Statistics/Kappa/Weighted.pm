@@ -79,7 +79,7 @@ sub _build_expected($self) {
 
 =head1 NAME
 
-Statistics::Kappa::Weighted
+Statistics::Kappa::Weighted - Calculate inter-annotator agreement.
 
 =head1 VERSION
 
@@ -108,7 +108,7 @@ disagreement (0 if the two values are the same). Two values of C<weight> are
 predefined: strings C<'linear'> and C<'quadratic'>. You can use them if the
 values are numbers and the weight is C<abs($x - $y)> or C<($x - $y) ** 2>,
 respectively. Note that using C<sub { $_[0] != $_[1] }> turns the weighted
-ϰ into unweighted ϰ.
+𝜅 into unweighted 𝜅.
 
 =head2 data
 
