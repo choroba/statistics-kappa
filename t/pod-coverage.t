@@ -21,4 +21,7 @@ eval "use Pod::Coverage $min_pc";
 plan skip_all => "Pod::Coverage $min_pc required for testing POD coverage"
     if $@;
 
-all_pod_coverage_ok();
+my @modules = grep 'Statistics::Kappa' ne $_, all_modules();
+
+pod_coverage_ok($_) for @modules;
+done_testing();

@@ -1,8 +1,14 @@
 package Statistics::Kappa;
 
+our $VERSION = '0.01';
+
 =head1 NAME
 
 Statistics::Kappa - Calculate inter-annotator agreement
+
+=head1 VERSION
+
+Version 0.01
 
 =head1 DESCRIPTION
 

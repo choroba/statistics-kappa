@@ -14,5 +14,5 @@ inc/
 nytprof.out
 pod2htm*.tmp
 pm_to_blib
-Statistics-Kappa-Cohen-*
-Statistics-Kappa-Cohen-*.tar.gz
+Statistics-Kappa-*
+Statistics-Kappa-*.tar.gz

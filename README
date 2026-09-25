@@ -1,16 +1,7 @@
-Statistics-Kappa-Cohen
+Statistics-Kappa
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
-
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
-
+Calculate inter-annotator agreement using Cohen's kappa, Fleiss'
+kappa, or weighted kappa.
 
 INSTALLATION
 
@@ -26,18 +17,18 @@ SUPPORT AND DOCUMENTATION
 After installing, you can find documentation for this module with the
 perldoc command.
 
-    perldoc Statistics::Kappa::Cohen
+    perldoc Statistics::Kappa
 
 You can also look for information at:
 
-    RT, CPAN's request tracker (report bugs here)
-        https://rt.cpan.org/NoAuth/Bugs.html?Dist=Statistics-Kappa-Cohen
-
     GitHub issue tracker
-        https://github.com/choroba/Statistics-Kappa-Cohen/issues
+        https://github.com/choroba/statistics-kappa/issues
+
+    RT, CPAN's request tracker (report bugs here)
+        https://rt.cpan.org/NoAuth/Bugs.html?Dist=Statistics-Kappa
 
     Search CPAN
-        https://metacpan.org/release/Statistics-Kappa-Cohen
+        https://metacpan.org/release/Statistics-Kappa
 
 
 LICENSE AND COPYRIGHT

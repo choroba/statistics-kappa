@@ -1,7 +1,7 @@
 package Statistics::Kappa::Weighted;
 use 5.026;
 
-our $VERSION = '0.02';
+our $VERSION = '0.01';
 
 use Moo;
 use experimental qw{ signatures };
@@ -83,7 +83,7 @@ Statistics::Kappa::Weighted
 
 =head1 VERSION
 
-Version 0.02
+Version 0.01
 
 =head1 SYNOPSIS
 
@@ -98,7 +98,7 @@ Version 0.02
 
 =head1 METHODS
 
-=head2 new
+=head2 'Statistics::Kappa::Weighted'->new(data => \@data, weight => \&weight)
 
 The constructor. It takes a named argument C<data> which should contain an
 array reference. The elements of the array should be anonymous arrays of two
@@ -110,6 +110,10 @@ values are numbers and the weight is C<abs($x - $y)> or C<($x - $y) ** 2>,
 respectively. Note that using C<sub { $_[0] != $_[1] }> turns the weighted
 ϰ into unweighted ϰ.
 
+=head2 data
+
+=head2 weight
+
 =head1 AUTHOR
 
 E. Choroba <choroba@matfyz.cz>
@@ -117,7 +121,7 @@ E. Choroba <choroba@matfyz.cz>
 =head1 BUGS
 
 Please report any bugs or feature requests to the L<GitHub
-repository|https://github.com/choroba/Statistics-Kappa-Cohen>, to
+repository|https://github.com/choroba/statistics-kappa>, to
 C<bug-statistics-kappa at rt.cpan.org>, or through the web interface at
 L<https://rt.cpan.org/NoAuth/ReportBug.html?Queue=Statistics-Kappa>. I will be
 notified, and then you'll automatically be notified of progress on your bug as
@@ -135,15 +139,15 @@ You can also look for information at:
 
 =item * GitHub issue tracker (report bugs here)
 
-L<https://github.com/choroba/Statistics-Kappa-Cohen/issues>
+L<https://github.com/choroba/statistics-kappa/issues>
 
 =item * RT: CPAN's request tracker (or here)
 
-L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Statistics-Kappa-Cohen>
+L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Statistics-Kappa>
 
 =item * Search CPAN
 
-L<https://metacpan.org/release/Statistics-Kappa-Cohen>
+L<https://metacpan.org/release/Statistics-Kappa>
 
 =back
 

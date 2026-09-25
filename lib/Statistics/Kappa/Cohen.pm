@@ -1,7 +1,7 @@
 package Statistics::Kappa::Cohen;
 use 5.026;
 
-our $VERSION = '0.02';
+our $VERSION = '0.01';
 
 use Moo;
 use experimental qw{ signatures };
@@ -15,16 +15,17 @@ has confusion          => (is => 'lazy', init_arg => undef);
 has expected_agreement => (is => 'lazy', init_arg => undef);
 has observed_agreement => (is => 'lazy', init_arg => undef);
 has standard_error     => (is => 'lazy', init_arg => undef);
-
-sub categories($self) {
-    my %c;
-    @c{ map @$_, @{ $self->{data} } } = ();
-    return sort keys %c
-}
+has _categories         => (is => 'lazy', init_arg => undef);
 
 sub confidence_interval($self, $level) {
     [$self->kappa - (1 + $level) * $self->standard_error,
      $self->kappa + (1 + $level) * $self->standard_error]
+}
+
+sub _build__categories($self) {
+    my %c;
+    @c{ map @$_, @{ $self->data } } = ();
+    return [sort keys %c]
 }
 
 sub _build_standard_error($self) {
@@ -54,8 +55,8 @@ sub _build_expected_agreement($self) {
     return sum(map { my $c = $_;
                      sum(values %{ $self->confusion->{$c} })
                      * sum(map $self->confusion->{$_}{$c} // 0,
-                               $self->categories)
-               } $self->categories
+                               @{ $self->_categories })
+               } @{ $self->_categories }
     ) / @{ $self->data } ** 2
 }
 
@@ -65,7 +66,7 @@ Statistics::Kappa::Cohen - Calculate inter-annotator agreement.
 
 =head1 VERSION
 
-Version 0.02
+Version 0.01
 
 =head1 SYNOPSIS
 
@@ -77,11 +78,18 @@ Version 0.02
 
 =head1 METHODS
 
-=head2 new
+=head2 'Statistics::Kappa::Cohen'->new(data => \@data)
 
 The constructor. It takes a named argument C<data> which should contain an
 array reference. The elements of the array should be anonymous arrays of two
 elements, representing answers by the two raters we are comparing.
+
+=head2 $self->confidence_interval($p)
+
+Return the confidence interval as an anonymous array with two elements. The
+argument is the required percentage, typically 0.95 or 0.99.
+
+=head2 data
 
 =head1 AUTHOR
 
@@ -90,7 +98,7 @@ E. Choroba <choroba@matfyz.cz>
 =head1 BUGS
 
 Please report any bugs or feature requests to the L<GitHub
-repository|https://github.com/choroba/Statistics-Kappa-Cohen>, to
+repository|https://github.com/choroba/statistics-kappa>, to
 C<bug-statistics-kappa at rt.cpan.org>, or through the web interface at
 L<https://rt.cpan.org/NoAuth/ReportBug.html?Queue=Statistics-Kappa>. I will be
 notified, and then you'll automatically be notified of progress on your bug as
@@ -109,15 +117,15 @@ You can also look for information at:
 
 =item * GitHub issue tracker (report bugs here)
 
-L<https://github.com/choroba/Statistics-Kappa-Cohen/issues>
+L<https://github.com/choroba/Statistics-Kappa/issues>
 
 =item * RT: CPAN's request tracker (or here)
 
-L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Statistics-Kappa-Cohen>
+L<https://rt.cpan.org/NoAuth/Bugs.html?Dist=Statistics-Kappa>
 
 =item * Search CPAN
 
-L<https://metacpan.org/release/Statistics-Kappa-Cohen>
+L<https://metacpan.org/release/Statistics-Kappa>
 
 =back
 

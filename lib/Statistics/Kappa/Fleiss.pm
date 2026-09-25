@@ -1,7 +1,7 @@
 package Statistics::Kappa::Fleiss;
 use 5.026;
 
-our $VERSION = '0.02';
+our $VERSION = '0.01';
 
 use Moo;
 use experimental qw{ signatures };
@@ -60,7 +60,7 @@ Statistics::Kappa::Fleiss - Calculate inter-annotator agreement.
 
 =head1 VERSION
 
-Version 0.02
+Version 0.01
 
 =head1 SYNOPSIS
 
@@ -74,13 +74,15 @@ Version 0.02
 
 =head1 METHODS
 
-=head2 new
+=head2 'Statistics::Kappa::Fleiss'->new(data => \@data)
 
 The constructor. It takes a named argument C<data> which should contain an
 array reference. Each element of the array represents a rated item by another
 anonymous array, which on position C<j> contains the number of raters that
 assigned the category C<j> to the item. Therefore, the format of the data is
 I<different> to other L<Statistics::Kappa> modules.
+
+=head2 data
 
 =head1 AUTHOR
 
@@ -89,7 +91,7 @@ E. Choroba <choroba@matfyz.cz>
 =head1 BUGS
 
 Please report any bugs or feature requests to the L<GitHub
-repository|https://github.com/choroba/Statistics-Kappa-Cohen>, to
+repository|https://github.com/choroba/statistics-kappa>, to
 C<bug-statistics-kappa at rt.cpan.org>, or through the web interface at
 L<https://rt.cpan.org/NoAuth/ReportBug.html?Queue=Statistics-Kappa>. I will be
 notified, and then you'll automatically be notified of progress on your bug as
@@ -107,7 +109,7 @@ You can also look for information at:
 
 =item * GitHub issue tracker (report bugs here)
 
-L<https://github.com/choroba/Statistics-Kappa-Cohen>
+L<https://github.com/choroba/Statistics-Kappa/issues>
 
 =item * RT: CPAN's request tracker (or here)
 

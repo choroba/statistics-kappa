@@ -27,11 +27,11 @@ my %WriteMakefileArgs = (
         resources   => {
             repository => {
                 type => 'git',
-                url  => 'https://github.com/choroba/Statistics-Kappa-Cohen.git',
-                web  => 'https://github.com/choroba/Statistics-Kappa-Cohen',
+                url  => 'https://github.com/choroba/statistics-kappa.git',
+                web  => 'https://github.com/choroba/statistics-kappa',
             },
             bugtracker => {
-                web => 'https://github.com/choroba/Statistics-Kappa/issues',
+                web => 'https://github.com/choroba/statistics-kappa/issues',
             },
         },
     },
