@@ -1,7 +1,7 @@
 package Statistics::Kappa::Cohen;
 use 5.026;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use Moo;
 use experimental qw{ signatures };
@@ -19,7 +19,7 @@ has standard_error     => (is => 'lazy', init_arg => undef);
 sub categories($self) {
     my %c;
     @c{ map @$_, @{ $self->{data} } } = ();
-    return keys %c
+    return sort keys %c
 }
 
 sub confidence_interval($self, $level) {
@@ -65,24 +65,22 @@ Statistics::Kappa::Cohen - Calculate inter-annotator agreement.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 
     use Statistics::Kappa::Cohen;
 
     my @data = ([1, 1], [1, 0], [1, 0], [0, 0], [1, 1], [0, 1]);
-    my $ck = 'Statistics::Kappa::Cohen'->new(data => @\data);
+    my $ck = 'Statistics::Kappa::Cohen'->new(data => \@data);
     my $kappa =  $ck->kappa;
 
-=head1 EXPORT
-
-=head1 SUBROUTINES/METHODS
+=head1 METHODS
 
 =head2 new
 
 The constructor. It takes a named argument C<data> which should contains an
-array reference. The elements of the array should be annonymous arrays of two
+array reference. The elements of the array should be anonymous arrays of two
 elements, representing answers by the two raters we are comparing.
 
 =head1 AUTHOR
