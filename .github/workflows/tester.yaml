@@ -50,7 +50,7 @@ jobs:
       - uses: actions/checkout@v7
       - name: Prove with author tests
         run: |
-            cpanm --installdeps .
+            cpanm --installdeps --with-develop .
             perl Makefile.PL
             make
             RELEASE_TESTING=1 make disttest
