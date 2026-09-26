@@ -15,6 +15,7 @@ my %WriteMakefileArgs = (
     },
     TEST_REQUIRES => {
         'Test::More' => '0',
+        'FindBin' => 0,
     },
     PREREQ_PM => {
         Moo => 0,
